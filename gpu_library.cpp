@@ -43,5 +43,5 @@ PYBIND11_PLUGIN(gpu_library)
 {
   pybind11::module m("gpu_library", "GPU Library");
   m.def("multiply_with_scalar", multiply_with_scalar);
-  
+  return m.ptr();
 }
