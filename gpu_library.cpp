@@ -36,7 +36,12 @@ void multiply_with_scalar(pybind11::array_t<double> vec, double scalar)
   error = cudaMemcpy(ptr, gpu_ptr, size * sizeof(double), cudaMemcpyDeviceToHost);
   if (error != cudaSuccess) {
     throw std::runtime_error(cudaGetErrorString(error));
-  }  
+  }
+
+  error = cudaFree(gpu_ptr);
+  if (error != cudaSuccess) {
+    throw std::runtime_error(cudaGetErrorString(error));
+  }
 }
 
 PYBIND11_PLUGIN(gpu_library)
