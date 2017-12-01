@@ -44,9 +44,7 @@ void multiply_with_scalar(pybind11::array_t<double> vec, double scalar)
   }
 }
 
-PYBIND11_PLUGIN(gpu_library)
+PYBIND11_MODULE(gpu_library, m)
 {
-  pybind11::module m("gpu_library", "GPU Library");
   m.def("multiply_with_scalar", multiply_with_scalar);
-  return m.ptr();
 }
